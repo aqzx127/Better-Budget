@@ -1,4 +1,4 @@
-# 💸 Better Budget Web App
+# 💸 Better Budget (Web App)
 
  - 🎯 **Purpose**: BetterBudget, is a project dedicated to empowering individuals and families to take control of their finances. We believe that with the right tools and insights, people can make more informed financial decisions, achieve their financial goals, and secure their financial future.
 
@@ -11,7 +11,7 @@
 
  - ⚡ **Quick Start**: \
         1. ```cd <desired location>```\
-        2. ```git clone https://github.com/aqzx127/BudgetBuddy.git```\
+        2. ```git clone https://github.com/aqzx127/Better-Budget.git```\
         3. ```cd frontend | backend```\
         4. ```npm install```\
         5. ```npm run dev | npm start```
