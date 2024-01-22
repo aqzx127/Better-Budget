@@ -9,7 +9,7 @@
         - Backend: *Node.js/Express/PostgreSQL*\
         - Utilities: *Nodemon/dayjs/Postman/TailwindCSS/*
 
- - ⚡ **Quick Start**: \
+ - ⚡ **Quick Start**:\
         1. ```cd <desired location>```\
         2. ```git clone https://github.com/aqzx127/Better-Budget.git```\
         3. ```cd frontend | backend```\
@@ -70,8 +70,21 @@
         - System to adapt and mention goal recommendations based on user data
 
 ### ❓ Other Thoughts & Concerns
- - Possible Security Risks?
+ - Possible External Security Risks?
  - Payment of OpenAI API Services?
  - Hosting for Frontend/Backend & Database?
  - Ability to Scale?
  - Overall Theme/Design of UI?
+ - State Management Library?
+ - Testing? (Unit/Integration/End-to-End)
+ - API Documentation?
+ - Rate Limiting?
+ - Helmet? (Security)
+ - Input Validation/Sanitize?
+ - Error Logging/ App Monitoring?
+ - Performance Optimizations?
+ - Responsive Design?
+ - Docker/Kubernetes?
+ - CI/CD?
+ - Accessibility?
+ - Internationalization/Localization? (Currency, Language)
