@@ -1,43 +1,57 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //import { Group, Code } from '@mantine/core';
 import {
-  IconBellRinging,
-  IconFingerprint,
-  IconKey,
+  IconHome,
+  IconUserCircle,
   IconSettings,
   IconReceipt2,
   IconSwitchHorizontal,
   IconLogout,
+  IconReport,
+  IconTargetArrow,
+  IconMessageChatbot,
 } from '@tabler/icons-react';
 import classes from '../css-modules/NavbarSimple.module.css';
 
 const data = [
-  { link: '', label: 'Dashboard', icon: IconBellRinging },
-  { link: '', label: 'Transactions', icon: IconReceipt2 },
-  { link: '', label: 'BudgetBuddy (AI Assistant)', icon: IconFingerprint },
-  { link: '', label: 'My Goals', icon: IconKey },
-  { link: '', label: 'Reports', icon: IconKey },
-  { link: '', label: 'My Profile', icon: IconFingerprint },
-  { link: '', label: 'Settings', icon: IconSettings },
+  { link: '/', label: 'Dashboard', icon: IconHome },
+  { link: '/transactions', label: 'Transactions', icon: IconReceipt2 },
+  { link: '/assistant', label: 'Budget-Buddy (AI Assistant)', icon: IconMessageChatbot },
+  { link: '/goals', label: 'My Goals', icon: IconTargetArrow },
+  { link: '/reports', label: 'Reports', icon: IconReport },
+  { link: '/profile', label: 'My Profile', icon: IconUserCircle },
+  { link: '/settings', label: 'Settings', icon: IconSettings },
 ];
 
 function Navbar() {
   const [active, setActive] = useState('Dashboard');
+  const { logout } = useAuth0();
+  const location = useLocation();
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const activeItem = data.find(item => item.link === currentPath)?.label;
+    setActive(activeItem || 'Dashboard');
+  }, [location]);
+
+  const handleLogout = () => {
+    logout({ returnTo: window.location.origin });
+  }
 
   const links = data.map((item) => (
-    <a
+    <Link
+      to={item.link}
       className={classes.link}
       data-active={item.label === active || undefined}
-      href={item.link}
       key={item.label}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(item.label);
-      }}
+      onClick={() => setActive(item.label)}
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />
       <span>{item.label}</span>
-    </a>
+    </Link>
   ));
 
   return (
@@ -47,13 +61,18 @@ function Navbar() {
       </div>
 
       <div className={classes.footer}>
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+        <a href="#" className={classes.link} onClick={(event) => {
+          event.preventDefault()
+        }}>
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span>Change account</span>
         </a>
 
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-          <IconLogout className={classes.linkIcon} stroke={1.5} />
+        <a href="#" className={classes.link} onClick={(event) => {
+          event.preventDefault()
+          handleLogout();
+        }}>
+          <IconLogout className={classes.linkIcon} stroke={1.5}/>
           <span>Logout</span>
         </a>
       </div>

@@ -1,9 +1,8 @@
 //import { useEffect } from 'react';
+import { Paper } from '@mantine/core';
 import Footer from '../components/Footer.jsx';
 import Hero from '../components/Hero.jsx'
 import Sidebar from '../components/Sidebar.jsx';
-import LoginButton from '../components/loginbutton.jsx';
-import LogoutButton from '../components/logoutbutton.jsx';
 import '../index.css'
 // import { useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
@@ -36,32 +35,18 @@ function Dashboard() {
     }
   };
   
-
-  // const authTest = async () => {
-  //   const token = await getAccessTokenSilently();
-  //   fetch('http://localhost:3001/api/authorized', {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   });
-    
-  //   console.log(response.json());
-  //   console.log()
-  // };
-
-  
   return (
     <>
-     <div className="flex flex-col h-screen">
+      <div className="flex flex-col h-screen">
         <Hero />
         <div className="flex flex-1 overflow-hidden">
           <Sidebar />
-          <div className='flex-1 overflow-y-auto bg-[#F9EFDB]'>
-            <h1>Lorem Ipsum</h1>
-            <LoginButton /> <br />
-            <LogoutButton /> <br />
-            <button onClick={testBackend}>Regular User Test</button> <br />
-            <button onClick={testAuth}>Auth User Test</button>
+          <div className='flex-1 overflow-y-auto bg-[#F9EFDB] p-4'>
+            <Paper shadow="sm" radius="md" p="lg" style={{ maxWidth: '768px', margin: 'auto' }}>
+              <h1 className='text-center'>Main Content</h1>
+              <button onClick={testBackend}>Regular User Test</button> <br />
+              <button onClick={testAuth}>Auth User Test</button>
+            </Paper>
           </div>
         </div>
         <Footer />
@@ -71,17 +56,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
-/* UI using Tailwind
-<div className="flex flex-col h-screen">
-        <Hero />
-        <div className="flex flex-1 overflow-hidden">
-          <Sidebar />
-          <div className='flex-1 overflow-y-auto bg-[#F9EFDB]'>
-            <h1>Lorem Ipsum</h1>
-             (Main Content Here)
-            </div>
-          </div>
-          <Footer />
-        </div>
-*/

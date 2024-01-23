@@ -1,6 +1,8 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
+// PostgreSQL/Sequelize Configuration (Credentials Stored Locally within .env)
+
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
   host: process.env.DB_HOST,
   dialect: 'postgres',
@@ -12,12 +14,6 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     acquire: 30000, // maximum time, in milliseconds, that a connection can be idle before being released
     idle: 10000 // maximum time, in milliseconds, that pool will try to get connection before throwing error
   }
-//   dialectOptions: {
-//     ssl: {
-//       require: false,
-//       rejectUnauthorized: false // for self-signed certificates
-//     }
-//   }
 });
 
 module.exports = sequelize;

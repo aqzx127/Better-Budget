@@ -28,6 +28,11 @@
                 - Settings
                 - Notifications
                 - Bio/About
+        
+        - Bank Linking
+                - Plaid API
+                - Populate Balance, Transactions
+                - 
 ---
     - User Expense Tracking Feature [ ]
 
@@ -71,6 +76,7 @@
 
 ### ❓ Other Thoughts & Concerns
  - Possible External Security Risks?
+ - Banking API? (Plaid)
  - Payment of OpenAI API Services?
  - Hosting for Frontend/Backend & Database?
  - Ability to Scale?

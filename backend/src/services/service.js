@@ -1,1 +1,1 @@
-// Business Logic & Service Layer
+// External Business Logic & Service Layer

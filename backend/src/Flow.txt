@@ -1,7 +1,7 @@
 # Backend Example Flow (MVC-Architecture):
     User Registration:
         1. The frontend sends a request to register a new user.
-        2.The request hits a route like POST /api/users.
+        2. The request hits a route like POST /api/users.
         3. Express routes the request to the appropriate controller function.
         4. The controller validates the request data.
         5. If valid, the controller uses the User model to create a new user in the database.
@@ -9,7 +9,7 @@
 
 # File Structure Example:
 models/
-    user.js - Sequelize model for users.
+    userModel.js - Sequelize model for users.
 controllers/
     userController.js - Functions to handle user-related requests.
 routes/
@@ -20,3 +20,12 @@ database/
     db-config.js - Sequelize configuration and connection.
     
 server.js - Main server file setting up Express and routes.
+
+
+
+# Still TODO #
+
+- Store JWT in cookies on the frontend
+- Persist Session via Stored JWT on page reload/navigation
+- Implement Session Expiry and Token Refreshing
+- Secure the Tokens
