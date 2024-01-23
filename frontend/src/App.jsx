@@ -12,7 +12,6 @@ import MyProfile from "./pages/MyProfile";
 
 function App() {
 
-
   return (
     <>
     <Router>

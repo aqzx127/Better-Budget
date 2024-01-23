@@ -1,5 +1,5 @@
 //import { useEffect } from 'react';
-import { Paper } from '@mantine/core';
+import { Paper, Button, } from '@mantine/core';
 import Footer from '../components/Footer.jsx';
 import Hero from '../components/Hero.jsx'
 import Sidebar from '../components/Sidebar.jsx';
@@ -43,9 +43,9 @@ function Dashboard() {
           <Sidebar />
           <div className='flex-1 overflow-y-auto bg-[#F9EFDB] p-4'>
             <Paper shadow="sm" radius="md" p="lg" style={{ maxWidth: '768px', margin: 'auto' }}>
-              <h1 className='text-center'>Main Content</h1>
-              <button onClick={testBackend}>Regular User Test</button> <br />
-              <button onClick={testAuth}>Auth User Test</button>
+              <h1 className='text-center'>Your Dashboard</h1>
+              <Button onClick={testBackend}>Regular User Test</Button> <br /> <br />
+              <Button onClick={testAuth}>Auth User Test</Button>
             </Paper>
           </div>
         </div>

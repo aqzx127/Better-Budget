@@ -1,6 +1,6 @@
 # 💸 Better Budget (Web App)
 
- - 🎯 **Purpose**: BetterBudget, is a project dedicated to empowering individuals and families to take control of their finances. We believe that with the right tools and insights, people can make more informed financial decisions, achieve their financial goals, and secure their financial future.
+ - 🎯 **Purpose**: BetterBudget, is a project dedicated to empowering individuals and families to take control of their finances. I believe that with the right tools and insights, people can make more informed financial decisions, achieve their financial goals, and secure their financial future.
 
  - 👉 **Features**: *Personalized Expense Tracking - AI Assistant - Goal Setting/Tracking - Simplistic Usage*
 
@@ -75,7 +75,7 @@
         - System to adapt and mention goal recommendations based on user data
 
 ### ❓ Other Thoughts & Concerns
- - Possible External Security Risks?
+ - Framer Motion?
  - Banking API? (Plaid)
  - Payment of OpenAI API Services?
  - Hosting for Frontend/Backend & Database?
@@ -86,6 +86,7 @@
  - API Documentation?
  - Rate Limiting?
  - Helmet? (Security)
+ - Possible External Security Risks?
  - Input Validation/Sanitize?
  - Error Logging/ App Monitoring?
  - Performance Optimizations?
