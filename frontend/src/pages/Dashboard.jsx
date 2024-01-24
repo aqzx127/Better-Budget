@@ -1,8 +1,6 @@
 //import { useEffect } from 'react';
 import { Paper, Button, } from '@mantine/core';
-import Footer from '../components/Footer.jsx';
-import Hero from '../components/Hero.jsx'
-import Sidebar from '../components/Sidebar.jsx';
+//import { useAuth } from '../context/authContext.jsx';
 import '../index.css'
 // import { useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
@@ -11,6 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 function Dashboard() {
 
   const { getAccessTokenSilently } = useAuth0();
+  // const { toggleSidebar, isSidebarOpen, } = useAuth();
 
   const testBackend = () => {
     fetch('http://localhost:3001/api/test')  // Update with your backend server URL
@@ -37,21 +36,12 @@ function Dashboard() {
   
   return (
     <>
-      <div className="flex flex-col h-screen">
-        <Hero />
-        <div className="flex flex-1 overflow-hidden">
-          <Sidebar />
-          <div className='flex-1 overflow-y-auto bg-[#F9EFDB] p-4'>
-            <Paper shadow="sm" radius="md" p="lg" style={{ maxWidth: '768px', margin: 'auto' }}>
-              <h1 className='text-center'>Your Dashboard</h1>
-              <Button onClick={testBackend}>Regular User Test</Button> <br /> <br />
-              <Button onClick={testAuth}>Auth User Test</Button>
-            </Paper>
-          </div>
-        </div>
-        <Footer />
-      </div>
-    </>
+      <Paper shadow="sm" radius="md" p="lg" style={{ maxWidth: '768px', margin: 'auto' }}>
+        <h1 className='text-center'>Your Dashboard</h1>
+        <Button onClick={testBackend}>Regular User Test</Button> <br /> <br />
+        <Button onClick={testAuth}>Auth User Test</Button>
+        {/* Your other content */}
+      </Paper></>
   )
 }
 

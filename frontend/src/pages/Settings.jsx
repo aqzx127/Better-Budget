@@ -1,29 +1,22 @@
 //import { useEffect } from 'react';
 import { Paper } from '@mantine/core';
-import Footer from '../components/Footer.jsx';
-import Hero from '../components/Hero.jsx'
-import Sidebar from '../components/Sidebar.jsx';
+//import { useAuth } from '../context/authContext.jsx';
 import '../index.css'
-// import { useEffect } from 'react';
+import { SwitchesCard } from '../components/SwitchesCard.jsx';
+//import { useEffect } from 'react';
 //import Profile from '../components/profile.jsx';
 
 function Settings() {
 
+  // const { toggleSidebar, isSidebarOpen, } = useAuth();
   
   return (
     <>
-      <div className="flex flex-col h-screen">
-        <Hero />
-        <div className="flex flex-1 overflow-hidden">
-          <Sidebar />
-          <div className='flex-1 overflow-y-auto bg-[#F9EFDB] p-4'>
             <Paper shadow="sm" radius="md" p="lg" style={{ maxWidth: '768px', margin: 'auto' }}>
               <h1 className='text-center'>Settings Page</h1>
+              <SwitchesCard />
             </Paper>
-          </div>
-        </div>
-        <Footer />
-      </div>
+          {/* Users here manage all types of settings such as notifcations, bank connections, user acc info, ect. */}
     </>
   )
 }

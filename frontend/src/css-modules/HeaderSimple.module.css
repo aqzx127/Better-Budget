@@ -2,14 +2,26 @@
     height: rem(56px);
     background-color: var(--mantine-color-body);
     border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    margin-left: 0% !important;
+    margin-right: 0% !important;
   }
+  
   
   .inner {
     height: rem(56px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    //margin-left: 0% !important;
+    margin-left: 0% !important;
+    margin-right: 0% !important;
+    max-width: none !important;
+  }
+
+  .group {
+    /* margin-left: 0% !important;
+    margin-right: 0% !important;
+    padding-left: 0% !important;
+    padding-right: 0% !important; */
   }
 
   .link {

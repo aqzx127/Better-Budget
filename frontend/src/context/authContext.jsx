@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { createContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -7,6 +7,12 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     
     const { getAccessTokenSilently } = useAuth0();
+
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
 
     const setToken = async () => {
         try {
@@ -24,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     
 
     return (
-        <AuthContext.Provider value={{setToken, getToken, }}>
+        <AuthContext.Provider value={{setToken, getToken, toggleSidebar, isSidebarOpen, setIsSidebarOpen, }}>
             {children}
         </AuthContext.Provider>
     );

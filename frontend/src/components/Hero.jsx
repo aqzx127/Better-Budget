@@ -9,7 +9,7 @@ import {
 } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 
-function Hero( { onToggleSidebar } ) {
+function Hero( { onToggleSidebar, isSidebarOpen } ) {
 
   const { loginWithRedirect, isAuthenticated } = useAuth0();
   const navigate = useNavigate();
@@ -21,16 +21,19 @@ function Hero( { onToggleSidebar } ) {
   return (
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
-        <button 
+        <div className='flex items-center space-x-2 text-left'>
+          {isSidebarOpen ? <IconToggleRight onClick={onToggleSidebar} className="cursor-pointer mr-10 ml-6" />
+              : <IconToggleLeft onClick={onToggleSidebar} className="cursor-pointer mr-10 ml-6" /> 
+          }
+         <button 
           onClick={redirectHome} 
           className="flex items-center space-x-2 text-left hover:text-blue-400 focus:outline-none"
         >
-          <IconToggleLeft onClick={onToggleSidebar} className="cursor-pointer mr-10" />
           <IconPigMoney className="cursor-pointer" />
           <h1 className="font-bold text-lg cursor-pointer">Better Budget</h1>
         </button>
-
-        <Group>
+        </div>
+        <Group className={classes.group}>
           {!isAuthenticated && (<Button className='align-right' onClick={loginWithRedirect}>Login</Button>)}
         </Group>
       </Container>

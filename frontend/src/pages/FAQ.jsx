@@ -2,20 +2,21 @@
 import { Paper } from '@mantine/core';
 //import { useAuth } from '../context/authContext.jsx';
 import '../index.css'
+import { FaqSimple } from '../components/FaqSimple.jsx';
 // import { useEffect } from 'react';
 //import Profile from '../components/profile.jsx';
 
-function Reports() {
+function FAQ() {
 
-  // const { toggleSidebar, isSidebarOpen, } = useAuth();
+    // const { toggleSidebar, isSidebarOpen, } = useAuth();
 
-  return (
-    <>
+    return (
+        <>
             <Paper shadow="sm" radius="md" p="lg" style={{ maxWidth: '768px', margin: 'auto' }}>
-              <h1 className='text-center'>Reports Page</h1>
+                <FaqSimple />
             </Paper>
-    </>
-  )
-}
+        </>
+    )
+    }
 
-export default Reports;
+export default FAQ;

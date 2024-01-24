@@ -11,6 +11,7 @@ import '@mantine/notifications/styles.css';
 import '@mantine/nprogress/styles.css';
 import '@mantine/spotlight/styles.css';
 import { MantineProvider, } from '@mantine/core';
+import { AuthProvider } from './context/authContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -25,7 +26,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       }}
     >
       <MantineProvider>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </MantineProvider>
     </Auth0Provider>
   </React.StrictMode>,

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+//import { motion } from "framer-motion"
 //import { Group, Code } from '@mantine/core';
 import {
   IconHome,
@@ -57,29 +58,29 @@ function Navbar() {
   ));
 
   return (
-    <nav className={classes.navbar}>
-      <div className={classes.navbarMain}>
-        {links}
-      </div>
-      <UserButton />
-      <div className={classes.footer}>
-        <a href="#" className={classes.link} onClick={(event) => {
-          event.preventDefault()
-        }}>
-          
-          <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
-          <span>Change account</span>
-        </a>
+      <nav className={classes.navbar}>
+        <div className={classes.navbarMain}>
+          {links}
+        </div>
+        <UserButton />
+        <div className={classes.footer}>
+          <a href="#" className={classes.link} onClick={(event) => {
+            event.preventDefault()
+          }}>
+            
+            <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
+            <span>Change account</span>
+          </a>
 
-        <a href="#" className={classes.link} onClick={(event) => {
-          event.preventDefault()
-          handleLogout();
-        }}>
-          <IconLogout className={classes.linkIcon} stroke={1.5}/>
-          <span>Logout</span>
-        </a>
-      </div>
-    </nav>
+          <a href="#" className={classes.link} onClick={(event) => {
+            event.preventDefault()
+            handleLogout();
+          }}>
+            <IconLogout className={classes.linkIcon} stroke={1.5}/>
+            <span>Logout</span>
+          </a>
+        </div>
+      </nav>
   );
 }
 
