@@ -11,7 +11,7 @@ const links = [
 function Footer() {
   const breadcrumbItems = links.map((link) => (
     <Anchor
-      color="dimmed"
+      c="dimmed"
       key={link.label}
       href={link.link}
       size="sm"

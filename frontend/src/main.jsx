@@ -17,9 +17,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Auth0Provider
       domain="dev-qsh22qbc8oa4list.us.auth0.com"
       clientId="m71PcpwIVXpQdC1GKbrZTg1bqu8lPBXV"
+      useRefreshTokens
+      cacheLocation="localstorage"
       authorizationParams={{
         redirect_uri: window.location.origin,
-        audience: "https://budgetbuddyapi/"
+        audience: "https://budgetbuddyapi/",
       }}
     >
       <MantineProvider>

@@ -15,11 +15,12 @@ import {
   IconMessageChatbot,
 } from '@tabler/icons-react';
 import classes from '../css-modules/NavbarSimple.module.css';
+import { UserButton } from './UserButton';
 
 const data = [
-  { link: '/', label: 'Dashboard', icon: IconHome },
+  { link: '/dashboard', label: 'Dashboard', icon: IconHome },
   { link: '/transactions', label: 'Transactions', icon: IconReceipt2 },
-  { link: '/assistant', label: 'Budget-Buddy (AI Assistant)', icon: IconMessageChatbot },
+  { link: '/assistant', label: 'Budget Buddy (AI-Assistant)', icon: IconMessageChatbot },
   { link: '/goals', label: 'My Goals', icon: IconTargetArrow },
   { link: '/reports', label: 'Reports', icon: IconReport },
   { link: '/profile', label: 'My Profile', icon: IconUserCircle },
@@ -27,17 +28,18 @@ const data = [
 ];
 
 function Navbar() {
-  const [active, setActive] = useState('Dashboard');
-  const { logout } = useAuth0();
+  const [active, setActive] = useState('');
+  const { logout, } = useAuth0();
   const location = useLocation();
 
   useEffect(() => {
     const currentPath = location.pathname;
     const activeItem = data.find(item => item.link === currentPath)?.label;
-    setActive(activeItem || 'Dashboard');
+    setActive(activeItem || '');
   }, [location]);
 
   const handleLogout = () => {
+    localStorage.removeItem('jwt');
     logout({ returnTo: window.location.origin });
   }
 
@@ -59,11 +61,12 @@ function Navbar() {
       <div className={classes.navbarMain}>
         {links}
       </div>
-
+      <UserButton />
       <div className={classes.footer}>
         <a href="#" className={classes.link} onClick={(event) => {
           event.preventDefault()
         }}>
+          
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span>Change account</span>
         </a>
