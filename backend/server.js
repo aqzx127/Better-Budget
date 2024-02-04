@@ -38,7 +38,7 @@ app.get('/api/authorized', jwtCheck, (req, res) => {
 });
 
 sequelize.sync().then(() => {
-  console.log('Tables have been created');
+  console.log('Tables have been created/Synced');
 }).catch((error) => {
   console.error('Unable to create tables', error);
 });

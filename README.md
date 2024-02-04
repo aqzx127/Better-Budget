@@ -17,24 +17,28 @@
         5. ```npm run dev | npm start```
 
 ## 📚 Main Feature Todo's for a MVP:
-    - User Registration Feature [ ]
+    - User Registration (Feature 1) [X]
 
         - User Account Data Model (Auth0/JWT)
-            - Username [string, unique]
+            - UserId [string, unique]
             - Email [string, unique] (Must Receive email conformation after registration)
-            - Password [string] (Allow password reset option)
+            - Name
+            - Bio
+            - Region
 
-        - Profile Customization
+            // Creating an initial user record until they add more personalized info
+
+        - Profile Customization [X]
                 - Settings
                 - Notifications
                 - Bio/About
         
-        - Bank Linking
+        - Bank Linking [ ]
                 - Plaid API
                 - Populate Balance, Transactions
-                - 
+                - Categorize Expenses
 ---
-    - User Expense Tracking Feature [ ]
+    - User Expense Tracking (Feature 2) [ ]
 
         - Data Entry
            - Form Fields
@@ -61,13 +65,13 @@
            - Reports: Allow users to generate monthly detailed reports
            - Transaction History: Show users a list of all their previous transactions
 ---
-    - AI Insights Chatbot via OpenAI API [ ]
+    - AI Insights Chatbot via OpenAI API (Feature 3) [ ]
         - BudgetBuddy Main Features:
            - Analyze user income/expense and savings goals
            - Provide recommendations based on user data
            - Ensure security and privacy of user financial data while delivering insights
 --- 
-    - User Goal Setting and Tracking [ ]
+    - User Goal Setting and Tracking (Feature 4) [ ]
 
         - Set Specific Goals with target amounts/deadlines
         - System must track users progress toward goal in real-time

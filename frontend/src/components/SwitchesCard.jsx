@@ -1,38 +1,43 @@
-import { Card, Group, Switch, Text } from '@mantine/core';
+// SwitchesCard.jsx
+import { Group, Switch, Text } from '@mantine/core';
 import classes from '../css-modules/SwitchesCard.module.css';
 
-const data = [
-  { title: 'Messages', description: 'Direct messages you have received from other users' },
-  { title: 'Review requests', description: 'Code review requests from your team members' },
-  { title: 'Comments', description: 'Daily digest with comments on your posts' },
-  {
-    title: 'Recommendations',
-    description: 'Digest with best community posts from previous week',
-  },
-];
+const SwitchItem = ({ title, description, checked, onChange }) => (
+  <Group justify="space-between" className={classes.item} wrap="nowrap" gap="xl">
+    <div>
+      <Text>{title}</Text>
+      <Text size="xs" c="dimmed">
+        {description}
+      </Text>
+    </div>
+    <Switch onLabel="ON" offLabel="OFF" className={classes.switch} size="lg" checked={checked} onChange={onChange} />
+  </Group>
+);
 
-export function SwitchesCard() {
-  const items = data.map((item) => (
-    <Group justify="space-between" className={classes.item} wrap="nowrap" gap="xl" key={item.title}>
-      <div>
-        <Text>{item.title}</Text>
-        <Text size="xs" c="dimmed">
-          {item.description}
-        </Text>
-      </div>
-      <Switch onLabel="ON" offLabel="OFF" className={classes.switch} size="lg" />
-    </Group>
-  ));
+const SwitchesCard = ({ settings, onToggle }) => {
+  const data = [
+    { title: 'Notify Me', description: 'Receive Notifications' },
+    { title: 'Enable AI Recommendations', description: 'AI will look at your finances and provide recommendations' },
+    { title: 'Enable Bank Linking', description: 'Connect your Bank Accounts using Plaid API' },
+    {
+      title: 'Dark Mode',
+      description: 'Toggle a dark theme',
+    },
+  ];
 
   return (
-    <Card withBorder radius="md" p="xl" className={classes.card}>
-      <Text fz="lg" className={classes.title} fw={500}>
-        Configure notifications
-      </Text>
-      <Text fz="xs" c="dimmed" mt={3} mb="xl">
-        Choose what notifications you want to receive
-      </Text>
-      {items}
-    </Card>
+    <>
+      {data.map((item) => (
+        <SwitchItem
+          key={item.title}
+          title={item.title}
+          description={item.description}
+          checked={settings[item.title.toLowerCase()]}
+          onChange={() => onToggle(item.title.toLowerCase())}
+        />
+      ))}
+    </>
   );
-}
+};
+
+export default SwitchesCard;

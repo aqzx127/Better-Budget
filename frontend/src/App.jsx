@@ -18,10 +18,10 @@ import MainLayout from "./components/MainLayout";
 function App() {
 
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
   useEffect(() => {
-    console.log(isLoggedIn);
+    //console.log(isLoggedIn);
     const token = localStorage.getItem('jwt');
     setIsLoggedIn(token !== null && token !== '');
     async function fetchAndStoreToken() {

@@ -2,6 +2,7 @@ import { Group, ActionIcon, rem, Breadcrumbs } from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconPigMoney } from '@tabler/icons-react';
 import classes from '../css-modules/FooterCentered.module.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const links = [
   { link: '/privacy', label: 'Privacy' },
@@ -10,6 +11,12 @@ const links = [
 ];
 
 function Footer() {
+  const navigate = useNavigate();
+
+  const redirectHome = () => {
+    navigate('/');
+  }
+
   const breadcrumbItems = links.map((link) => (
     <Link
       to={link.link}
@@ -25,7 +32,7 @@ function Footer() {
   return (
     <div className={classes.footer}>
       <div className={classes.inner}>
-        <IconPigMoney />
+        <IconPigMoney className="cursor-pointer" onClick={redirectHome}/>
         <Breadcrumbs separator="|" className={classes.links}>
           {breadcrumbItems}
         </Breadcrumbs>

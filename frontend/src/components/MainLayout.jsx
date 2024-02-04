@@ -11,7 +11,7 @@ const MainLayout = ({ children }) => {
     open: {
       x: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         type: 'spring', stiffness: 70, damping: 20
     },
     },

@@ -1,8 +1,8 @@
-import { Container, Title, Accordion } from '@mantine/core';
+import { Container, Title, Accordion, Divider } from '@mantine/core';
 import classes from '../css-modules/FaqSimple.module.css';
 
 const placeholder =
-  'It can’t help but hear a pin drop from over half a mile away, so it lives deep in the mountains where there aren’t many people or Pokémon.It was born from sludge on the ocean floor. In a sterile environment, the germs within its body can’t multiply, and it dies.It has no eyeballs, so it can’t see. It checks its surroundings via the ultrasonic waves it emits from its mouth.';
+  'Placeholder Text';
 
 export function FaqSimple() {
   return (
@@ -10,6 +10,7 @@ export function FaqSimple() {
       <Title ta="center" className={classes.title}>
         Frequently Asked Questions
       </Title>
+      <Divider m="sm" />
 
       <Accordion variant="separated">
         <Accordion.Item className={classes.item} value="reset-password">
@@ -18,22 +19,22 @@ export function FaqSimple() {
         </Accordion.Item>
 
         <Accordion.Item className={classes.item} value="another-account">
-          <Accordion.Control>Can I create more that one account?</Accordion.Control>
+          <Accordion.Control>Can I create more than one account?</Accordion.Control>
           <Accordion.Panel>{placeholder}</Accordion.Panel>
         </Accordion.Item>
 
         <Accordion.Item className={classes.item} value="newsletter">
-          <Accordion.Control>How can I subscribe to monthly newsletter?</Accordion.Control>
+          <Accordion.Control>How can I delete my account?</Accordion.Control>
           <Accordion.Panel>{placeholder}</Accordion.Panel>
         </Accordion.Item>
 
         <Accordion.Item className={classes.item} value="credit-card">
-          <Accordion.Control>Do you store credit card information securely?</Accordion.Control>
+          <Accordion.Control>Do you store financial information securely?</Accordion.Control>
           <Accordion.Panel>{placeholder}</Accordion.Panel>
         </Accordion.Item>
 
         <Accordion.Item className={classes.item} value="payment">
-          <Accordion.Control>What payment systems to you work with?</Accordion.Control>
+          <Accordion.Control>Do you support different currency?</Accordion.Control>
           <Accordion.Panel>{placeholder}</Accordion.Panel>
         </Accordion.Item>
       </Accordion>

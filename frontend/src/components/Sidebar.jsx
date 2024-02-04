@@ -30,7 +30,7 @@ const data = [
 
 function Navbar() {
   const [active, setActive] = useState('');
-  const { logout, } = useAuth0();
+  const { logout, isAuthenticated, loginWithRedirect } = useAuth0();
   const location = useLocation();
 
   useEffect(() => {
@@ -63,15 +63,17 @@ function Navbar() {
           {links}
         </div>
         <UserButton />
+        {isAuthenticated && (
         <div className={classes.footer}>
           <a href="#" className={classes.link} onClick={(event) => {
             event.preventDefault()
+            handleLogout();
           }}>
             
             <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
             <span>Change account</span>
           </a>
-
+      
           <a href="#" className={classes.link} onClick={(event) => {
             event.preventDefault()
             handleLogout();
@@ -80,6 +82,7 @@ function Navbar() {
             <span>Logout</span>
           </a>
         </div>
+        )}
       </nav>
   );
 }

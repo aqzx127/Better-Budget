@@ -10,8 +10,9 @@ const User = sequelize.define('users', {
   userId: {
     type: Sequelize.STRING,
     primaryKey: true,
-    allowNull: false
-  },
+    allowNull: false,
+    unique: true,
+  },  
   email: {
     type: Sequelize.STRING,
     unique: true,
@@ -20,6 +21,19 @@ const User = sequelize.define('users', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
+  },
+  bio: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  region: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  additionalInfo: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
   }
   // add more attributes as needed
 });

@@ -7,6 +7,20 @@
     border-right: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
   }
   
+/*
+Color Scheme 1:
+#F9EFDB
+#EBD9B4
+#9DBC98
+#638889
+
+rgb(249, 239, 219)
+rgb(235, 217, 180)
+rgb(157, 188, 152)
+rgb(99, 136, 137) 
+*/
+
+
   .navbarMain {
     flex: 1;
   }
