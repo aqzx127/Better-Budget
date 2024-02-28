@@ -17,26 +17,27 @@
         5. ```npm run dev | npm start```
 
 ## 📚 Main Feature Todo's for a MVP:
-    - User Registration (Feature 1) [X]
+    - User Registration/Account Creation (Feature 1) [X]
 
         - User Account Data Model (Auth0/JWT)
             - UserId [string, unique]
-            - Email [string, unique] (Must Receive email conformation after registration)
+            - Email [string, unique] (Must Receive email conformation after registration!)
             - Name
             - Bio
             - Region
 
             // Creating an initial user record until they add more personalized info
 
-        - Profile Customization [X]
-                - Settings
-                - Notifications
+        - Profile Setup/Page [X]
+                - Settings []
+                - Notifications []
                 - Bio/About
         
         - Bank Linking [ ]
-                - Plaid API
-                - Populate Balance, Transactions
-                - Categorize Expenses
+                - Plaid API [X]
+                - Populate Balance [X], 
+                - Populate/List Transactions []
+                - Categorize Expenses []
 ---
     - User Expense Tracking (Feature 2) [ ]
 

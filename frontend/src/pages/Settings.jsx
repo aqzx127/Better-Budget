@@ -1,5 +1,5 @@
 // Settings.jsx
-import { Paper, Button } from '@mantine/core';
+import { Paper, Divider } from '@mantine/core';
 import '../index.css';
 import SwitchesCard from '../components/SwitchesCard';
 import { useState, useEffect } from 'react';
@@ -36,6 +36,7 @@ function Settings() {
         <h1 className="text-center">Configure Settings</h1>
         <br />
         <SwitchesCard settings={settings} onToggle={handleToggle} />
+        <Divider my="sm"/>
       </Paper>
       {/* Users here manage all types of settings such as notifications, bank connections, user acc info, etc. */}
     </>

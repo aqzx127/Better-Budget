@@ -5,7 +5,7 @@ import {
   IconCheck,
 } from '@tabler/icons-react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { fetchUserData } from '../utils/api'
+import { fetchUserData, updateUserProfile } from '../utils/api'
 
 function MyProfile() {
   const { user, isAuthenticated, isLoading, } = useAuth0();
@@ -20,25 +20,10 @@ function MyProfile() {
 
   const handleSaveClick = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/users/${user.sub}`, {
-        method: 'PUT', // Adjust the HTTP method based on your server implementation
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          bio: userBio,
-          region: userRegion,
-        }),
-      });
-
-      if (response.ok) {
-        console.log('Changes saved successfully');
-        setEditMode(false);
-      } else {
-        console.error('Failed to save changes:', response.statusText);
-      }
+      await updateUserProfile(user.sub, userBio, userRegion); // Use updateUserProfile function
+      setEditMode(false);
     } catch (error) {
-      console.error('Error saving changes:', error.message);
+      console.error(error.message);
     }
   };
 
@@ -107,6 +92,10 @@ function MyProfile() {
           </Paper>
         </Container>
       )}
+      {!isAuthenticated && (
+        <p>Please Login or Sign-up to view your profile</p>
+      )
+      }
     </>
   );
 }
