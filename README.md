@@ -34,7 +34,7 @@
                 - Bio/About
         
         - Bank Linking [ ]
-                - Plaid API [X]
+                - Plaid API [X] (Still need to save Plaid data to local postgreSQL DB)
                 - Populate Balance [X], 
                 - Populate/List Transactions []
                 - Categorize Expenses []
