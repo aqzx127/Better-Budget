@@ -65,7 +65,7 @@ export const updateUserProfile = async (userId, userBio, userRegion) => {
 
 export const createLinkToken = async () => {
   try {
-    const response = await fetch(`http://localhost:3001/api/create_link_token`, {
+    const response = await fetch(`http://localhost:3001/api/plaid/create_link_token`, {
       method: 'POST',
     });
     const data = await response.json();
@@ -77,7 +77,7 @@ export const createLinkToken = async () => {
 
 export const exchangePublicToken = async (publicToken, accessToken) => {
   try {
-    const response = await fetch("http://localhost:3001/api/exchange_public_token", {
+    const response = await fetch("http://localhost:3001/api/plaid/exchange_public_token", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ export const exchangePublicToken = async (publicToken, accessToken) => {
 
 export const plaidAuth = async (accessToken) => {
   try {
-    const response = await fetch("http://localhost:3001/api/plaidAuth", {
+    const response = await fetch("http://localhost:3001/api/plaid/plaidAuth", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -115,3 +115,41 @@ export const plaidAuth = async (accessToken) => {
   }
 };
 
+//--------------Transaction API Calls-----------------------------------------------------------------------------
+
+export const fetchUserTransactions = async (token) => {
+  try {
+    const response = await fetch("http://localhost:3001/api/transactions/view", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw new Error("Error fetching User Transactions: " + error.message)
+  }
+};
+
+export const createUserTransaction = async (token, transactionData) => {
+  try {
+    const response = await fetch("http://localhost:3001/api/transactions/create", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(transactionData)
+    });
+    console.log(transactionData);
+    console.log(token);
+    const data = await response.json();
+    console.log(data);
+    return data; // Optionally, you can return the response data if needed
+  } catch (error) {
+    throw new Error("Error creating User Transaction: " + error.message);
+  }
+};

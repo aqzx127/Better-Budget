@@ -10,23 +10,6 @@ exports.createUser = (req, res) => {
         .catch(error => res.status(400).json({ error: error.message }));
 };
 
-// exports.checkProfileCompletion = async (req, res) => {
-//     try {
-//         const { userId } = req.params;
-//         const user = await User.findOne({ where: { userId } });
-
-//         if (!user) {
-//             return res.status(404).json({ error: 'User not found'});
-//         }
-
-//         const isProfileComplete = user.additionalInfo;
-//         res.json({ isProfileComplete });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ error: 'Internal server error'})
-//     }
-// };
-
 exports.getUser = async (req, res) => {
     try {
         const userId = req.params.userId;
@@ -75,6 +58,24 @@ exports.updateUser = async (req, res) => {
     }
 };
 
-
 // Add other controller functions as needed
+
+// exports.checkProfileCompletion = async (req, res) => {
+//     try {
+//         const { userId } = req.params;
+//         const user = await User.findOne({ where: { userId } });
+
+//         if (!user) {
+//             return res.status(404).json({ error: 'User not found'});
+//         }
+
+//         const isProfileComplete = user.additionalInfo;
+//         res.json({ isProfileComplete });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ error: 'Internal server error'})
+//     }
+// };
+
+
 

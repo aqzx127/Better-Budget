@@ -19,19 +19,19 @@
 ## 📚 Main Feature Todo's for a MVP:
     - User Registration/Account Creation (Feature 1) [X]
 
-        - User Account Data Model (Auth0/JWT)
+        - User Account Data Model (Auth0/JWT) [X]
             - UserId [string, unique]
             - Email [string, unique] (Must Receive email conformation after registration!)
             - Name
             - Bio
             - Region
 
-            // Creating an initial user record until they add more personalized info
+            // Creating an initial user record until they add more info
 
-        - Profile Setup/Page [X]
-                - Settings []
-                - Notifications []
-                - Bio/About
+        - User Profile Creation [X]
+                - Settings Page []
+                - Notifications Setup []
+                - Bio/About Page [X]
         
         - Bank Linking [ ]
                 - Plaid API [X] (Still need to save Plaid data to local postgreSQL DB)

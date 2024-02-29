@@ -10,7 +10,6 @@ function Dashboard() {
   const { getAccessTokenSilently } = useAuth0();
 
   const [linkToken, setLinkToken] = useState();
-  const [publicToken, setPublicToken] = useState();
   const [accessToken, setAccessToken] = useState();
   const [plaidAccounts, setPlaidAccounts] = useState([]);
 
@@ -60,8 +59,6 @@ function Dashboard() {
     token: linkToken,
     onSuccess: (public_token, metadata) => {
       console.log("success", public_token, metadata)
-      setPublicToken(public_token);
-      console.log(publicToken);
       exchangeTokenAndFetchAccount(public_token);
     },
   });
@@ -72,7 +69,7 @@ function Dashboard() {
         <h1 className='text-center'>Your Dashboard</h1>
         <Button onClick={testBackend}>Regular User Test</Button> <br /> <br />
         <Button onClick={testMyAuth}>Auth User Test</Button> <br /> <br />
-        <Button onClick={() => open()} disabled={!ready}>Connect a bank account</Button> <br /> <br />
+        <Button onClick={() => open()} disabled={!ready}>Plaid (Bank Account) API Test</Button> <br /> <br />
         <Divider ml="xl"/> <br />
         {plaidAccounts.map((account, index) => (
           <Card key={index} shadow="sm" style={{ marginBottom: '20px', backgroundColor: 'lightgrey' }}>
