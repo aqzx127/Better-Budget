@@ -35,6 +35,10 @@
     color: #4CB9E7;
 }
 
+.empty-row {
+    height: 36.7px; /* Adjust this value as needed */
+}
+  
 /*
 Current Color Scheme:
 #F9EFDB

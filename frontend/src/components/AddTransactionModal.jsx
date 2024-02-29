@@ -1,13 +1,19 @@
-import { Modal, TextInput, Button } from '@mantine/core';
+import { Modal, TextInput, Button, Select, NumberInput } from '@mantine/core';
 import { useState } from 'react';
 
 function AddTransactionModal({ opened, onClose, onSubmit }) {
-  const [newTransaction, setNewTransaction] = useState({ name: '', amount: '', status: '', date: '' });
+  const [newTransaction, setNewTransaction] = useState({ 
+    name: '', 
+    amount: 0, // Or start with '0' if you prefer a string
+    status: '',  
+    date: '' 
+  });
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    onSubmit(newTransaction);
-  };
+    const amountAsNumber = parseFloat(newTransaction.amount);
+    onSubmit({ ...newTransaction, amount: amountAsNumber }); 
+};
 
   return (
     <Modal title="Add New Transaction" opened={opened} onClose={onClose}>
@@ -18,17 +24,25 @@ function AddTransactionModal({ opened, onClose, onSubmit }) {
           onChange={(event) => setNewTransaction({ ...newTransaction, name: event.target.value })}
           required
         />
-        <TextInput
-          type="number"
+        <NumberInput
           label="Amount $"
-          value={newTransaction.amount}
-          onChange={(event) => setNewTransaction({ ...newTransaction, amount: event.target.value })}
+          decimalScale={2}
+          fixedDecimalScale
+          value={newTransaction.amount.toString()} // Convert to string
+          onChange={(event) => setNewTransaction({ ...newTransaction, amount: parseFloat(event) })} // Parse float
           required
+          // Add more options for precise input control if needed
         />
-        <TextInput
+        <Select
           label="Status"
+          placeholder="Select a status"
+          data={[
+            { value: 'Completed', label: 'Completed' },
+            { value: 'Pending', label: 'Pending' },
+            // Add more options as needed
+          ]}
           value={newTransaction.status}
-          onChange={(event) => setNewTransaction({ ...newTransaction, status: event.target.value })}
+          onChange={(value) => setNewTransaction({ ...newTransaction, status: value })} 
           required
         />
         <TextInput
@@ -46,3 +60,4 @@ function AddTransactionModal({ opened, onClose, onSubmit }) {
 }
 
 export default AddTransactionModal;
+

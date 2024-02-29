@@ -7,13 +7,12 @@ const Transaction = sequelize.define('transactions', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
-    defaultValue: UUIDV4,
+    defaultValue: DataTypes.UUIDV4, // Use UUIDV4 as the default
     allowNull: false
   },
   userId: {
     type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
+    allowNull: false
   }, 
   name: {
     type: DataTypes.STRING,
