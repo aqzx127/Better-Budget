@@ -10,9 +10,9 @@ router.post('/create', jwtCheck, transactionController.createTransaction); // Cr
 
 router.get('/view', jwtCheck, transactionController.getUserTransactions); // Fetch Transactions from PostgreSQL
 
-router.put('/edit', jwtCheck, transactionController.updateTransaction); // Edit Transaction
+router.put('/update/:id', jwtCheck, transactionController.updateTransaction); // Edit Transaction
 
-router.delete('/delete', jwtCheck, transactionController.deleteTransaction); // Delete Transaction
+router.delete('/delete/:id', jwtCheck, transactionController.deleteTransaction); // Delete Transaction
 
 // Define other transaction routes here
 

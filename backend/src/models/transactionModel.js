@@ -22,6 +22,10 @@ const Transaction = sequelize.define('transactions', {
     type: DataTypes.DECIMAL(10, 2), // Adjust precision and scale as needed
     allowNull: false,
   },
+  transactionType: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   status: {
     type: DataTypes.STRING,
     allowNull: false,

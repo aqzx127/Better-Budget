@@ -72,17 +72,19 @@ function Dashboard() {
         <Button onClick={() => open()} disabled={!ready}>Plaid (Bank Account) API Test</Button> <br /> <br />
         <Divider ml="xl"/> <br />
         {plaidAccounts.map((account, index) => (
-          <Card key={index} shadow="sm" style={{ marginBottom: '20px', backgroundColor: 'lightgrey' }}>
-            <Group key={index}>
-              <Badge color="teal">{account.name}</Badge>
-              <p>Account Number: {account.numbers.ach[0].account}</p>
-              <p>Account ID: {account.numbers.ach[0].account_id}</p>
-              <p>Routing Number: {account.numbers.ach[0].routing}</p>
-              <p>Wire Routing Number: {account.numbers.ach[0].wire_routing}</p>
-              <p>Current Balance: {account.accountData[0].balances.current}$</p>
-            </Group>
-          </Card>
-        ))}
+  <Card key={index} shadow="sm" style={{ marginBottom: '20px', backgroundColor: 'lightgrey' }}>
+    <Group key={index}>
+      <Badge color="teal">{account.accountData.map((data) => data.name).join(', ')}</Badge>
+      {/* Accessing the names of each account in the accountData array */}
+      <p>Account Number: {account.numbers.ach[0].account}</p>
+      <p>Account ID: {account.numbers.ach[0].account_id}</p>
+      <p>Routing Number: {account.numbers.ach[0].routing}</p>
+      <p>Wire Routing Number: {account.numbers.ach[0].wire_routing}</p>
+      <p>Current Balance: {account.accountData[0].balances.current}$</p>
+    </Group>
+  </Card>
+))}
+
       </Paper>
     </>
   )

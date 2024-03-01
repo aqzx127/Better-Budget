@@ -153,3 +153,36 @@ export const createUserTransaction = async (token, transactionData) => {
     throw new Error("Error creating User Transaction: " + error.message);
   }
 };
+
+export const editUserTransaction = async (token, transactionId, editedTransaction) => {
+  try {
+    const response = await fetch(`http://localhost:3001/api/transactions/update/${transactionId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(editedTransaction)
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error("Error updating User Transaction: " + error.message);
+  }
+};
+
+export const deleteUserTransaction = async (token, transactionId) => {
+  try {
+    const response = await fetch(`http://localhost:3001/api/transactions/delete/${transactionId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error("Error deleting User Transaction: ", error.message);
+  }
+}
