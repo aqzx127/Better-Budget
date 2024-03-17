@@ -19,3 +19,5 @@ function Privacy() {
     }
 
     export default Privacy;
+
+    // State actions taken for user privacy and provide terms of service again.

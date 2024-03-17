@@ -20,3 +20,5 @@ function FAQ() {
     }
 
 export default FAQ;
+
+// Provide basic user information in the form of Q/A

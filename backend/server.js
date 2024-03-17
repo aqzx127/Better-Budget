@@ -5,6 +5,7 @@ const userRoutes = require('./src/routes/userRoutes');
 const testRoutes = require('./src/routes/testRoutes');
 const plaidRoutes = require('./src/routes/plaidRoutes');
 const transactionRoutes = require('./src/routes/transactionRoutes');
+const goalRoutes = require('./src/routes/goalRoutes');
 
 const app = express();
 const port = 3001;
@@ -23,6 +24,9 @@ app.use('/api/users', userRoutes);
 
 // Use Transaction routes
 app.use('/api/transactions', transactionRoutes);
+
+// Use Goal routes
+app.use('/api/goals', goalRoutes);
 
 // Use Plaid routes
 app.use('/api/plaid', plaidRoutes);

@@ -25,20 +25,22 @@ export const testAuth = async (accessToken) => {
 
 //----------------------------------------------USER DATA API UTILS---------------------------------------------------------------------------------
 
-export const fetchUserData = async (userId, setUserBio, setUserRegion) => {
+export const fetchUserData = async (userId, setUserBio, setUserRegion, setUserIncome, setUserSavingsGoal) => {
   try {
     const response = await fetch(`http://localhost:3001/api/users/${userId}`);
     if (response.ok) {
       const userData = await response.json();
       setUserBio(userData.bio || '');
       setUserRegion(userData.region || 'Not Set');
+      setUserIncome(userData.income || 'Not Set');
+      setUserSavingsGoal(userData.savingGoal || 'Not Set');
     }
   } catch (error) {
     console.error('Error fetching user data:', error.message);
   }
 };
 
-export const updateUserProfile = async (userId, userBio, userRegion) => {
+export const updateUserProfile = async (userId, userBio, userRegion, userIncome, userSavingsGoal) => {
   try {
     const response = await fetch(`http://localhost:3001/api/users/${userId}`, {
       method: 'PUT',
@@ -48,6 +50,8 @@ export const updateUserProfile = async (userId, userBio, userRegion) => {
       body: JSON.stringify({
         bio: userBio,
         region: userRegion,
+        monthlyIncome: userIncome,
+        monthlySavingsGoal: userSavingsGoal
       }),
     });
 
@@ -186,3 +190,42 @@ export const deleteUserTransaction = async (token, transactionId) => {
     throw new Error("Error deleting User Transaction: ", error.message);
   }
 }
+
+//---------------------------------------------------------GOAL API CALLS---------------------------------------------------------------//
+
+export const createUserGoal = async (token, goalData) => {
+  try {
+    const response = await fetch("http://localhost:3001/api/goals/create", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(goalData)
+    });
+    console.log(goalData);
+    console.log(token);
+    const data = await response.json();
+    console.log(data);
+    return data; // Optionally, you can return the response data if needed
+  } catch (error) {
+    throw new Error("Error creating User Goal: " + error.message);
+  }
+};
+
+export const fetchUserGoals = async (token) => {
+  try {
+    const response = await fetch("http://localhost:3001/api/goals/view", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw new Error("Error fetching User Goals: " + error.message)
+  }
+};

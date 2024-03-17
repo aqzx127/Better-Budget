@@ -30,7 +30,7 @@ const data = [
 
 function Navbar() {
   const [active, setActive] = useState('');
-  const { logout, isAuthenticated, loginWithRedirect } = useAuth0();
+  const { logout, isAuthenticated } = useAuth0();
   const location = useLocation();
 
   useEffect(() => {

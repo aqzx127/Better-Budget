@@ -13,14 +13,14 @@ const MainLayout = ({ children }) => {
       opacity: 1,
       transition: {
         type: 'spring', stiffness: 70, damping: 20
-    },
+      },
     },
     closed: {
       x: '-100%', // Update as needed
       opacity: 0,
       transition: { 
         type: 'spring', stiffness: 70, damping: 20 
-    },
+      },
     },
   };
 

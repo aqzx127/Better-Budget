@@ -1,21 +1,27 @@
-import { useContext, useEffect, useState } from "react";
-import { createContext } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const { getAccessTokenSilently, isAuthenticated, user } = useAuth0();
   const [newUser, setNewUser] = useState(null);
+  const [termsAccepted, setTermsAccepted] = useState(false); // State to track whether terms are accepted
+  const [income, setIncome] = useState('');
+  const [savingGoal, setSavingGoal] = useState('');
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+    setIsSidebarOpen(!isSidebarOpen); 
   };
 
+  
+  
   useEffect(() => {
     const createUserInDatabase = async () => {
       if (isAuthenticated && user) {
+        // If user is present, authenticated, and terms accepted, then create an account for them in local DB, if not already created.
         try {
           const accessToken = await getAccessTokenSilently();
           const response = await fetch('http://localhost:3001/api/users/create', {
@@ -34,6 +40,7 @@ export const AuthProvider = ({ children }) => {
           if (response.ok) {
             // Successfully created the user in DB
             const userData = await response.json();
+            // Ask for basic account info like, monthly income, savings goals.
             setNewUser(userData);
           } else {
             console.error('Failed to create user in the database:', response.statusText);
@@ -45,10 +52,10 @@ export const AuthProvider = ({ children }) => {
     };
 
     createUserInDatabase();
-  }, [isAuthenticated, user, getAccessTokenSilently]);
+  }, [isAuthenticated, user, getAccessTokenSilently, termsAccepted]);
 
   return (
-    <AuthContext.Provider value={{ toggleSidebar, isSidebarOpen, setIsSidebarOpen, newUser }}>
+    <AuthContext.Provider value={{ toggleSidebar, isSidebarOpen, setIsSidebarOpen, newUser, termsAccepted, setTermsAccepted, income, setIncome, savingGoal, setSavingGoal }}>
       {children}
     </AuthContext.Provider>
   );

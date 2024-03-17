@@ -12,6 +12,8 @@ import '@mantine/nprogress/styles.css';
 import '@mantine/spotlight/styles.css';
 import { MantineProvider, } from '@mantine/core';
 import { AuthProvider } from './context/authContext.jsx';
+import { TransactionProvider } from './context/TransactionContext.jsx';
+import { GoalsProvider } from './context/GoalsContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -27,7 +29,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     >
       <MantineProvider>
         <AuthProvider>
-          <App />
+          <TransactionProvider>
+            <GoalsProvider>
+              <App />
+            </GoalsProvider>
+          </TransactionProvider>
         </AuthProvider>
       </MantineProvider>
     </Auth0Provider>

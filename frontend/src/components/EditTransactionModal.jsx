@@ -35,7 +35,7 @@ function EditTransactionModal({ opened, onClose, onSubmit, transaction }) {
       <form onSubmit={handleFormSubmit}>
         <TextInput
           label="Name"
-          placeholder={"Name"}
+          placeholder="Name"
           value={editedTransaction.name}
           onChange={(event) => setEditedTransaction({ ...editedTransaction, name: event.target.value })}
           required

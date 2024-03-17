@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react';
-import { Paper, Image, Textarea, Button, Container, Divider } from '@mantine/core';
-import {
-  IconEdit,
-  IconCheck,
-} from '@tabler/icons-react';
+import { Paper, Image, Textarea, Button, Container, Divider, TextInput } from '@mantine/core';
+import { IconEdit, IconCheck } from '@tabler/icons-react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { fetchUserData, updateUserProfile } from '../utils/api'
+import { fetchUserData, updateUserProfile } from '../utils/api';
+import { useAuth } from '../context/authContext';
 
 function MyProfile() {
-  const { user, isAuthenticated, isLoading, } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { income, setIncome, savingGoal, setSavingGoal } = useAuth();
 
   const [editMode, setEditMode] = useState(false);
   const [userBio, setUserBio] = useState('');
   const [userRegion, setUserRegion] = useState('');
 
   const handleEditClick = () => {
+    //setUserRegion(user.region); 
     setEditMode(!editMode);
   };
 
   const handleSaveClick = async () => {
     try {
-      await updateUserProfile(user.sub, userBio, userRegion); // Use updateUserProfile function
+      await updateUserProfile(user.sub, userBio, userRegion, income, savingGoal);
       setEditMode(false);
     } catch (error) {
       console.error(error.message);
@@ -29,9 +29,9 @@ function MyProfile() {
 
   useEffect(() => {
     if (isAuthenticated && !isLoading) {
-      fetchUserData(user.sub, setUserBio, setUserRegion);
+      fetchUserData(user.sub, setUserBio, setUserRegion, setIncome, setSavingGoal);
     }
-  }, [isAuthenticated, isLoading, user]);
+  }, [isAuthenticated, isLoading]);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -57,13 +57,32 @@ function MyProfile() {
                   <h2 className="text-xl font-bold">{user.name}</h2>
                   <p className="text-gray-600">{user.email}</p>
                   {editMode ? (
-                    <Textarea
-                      value={userRegion}
-                      onChange={(event) => setUserRegion(event.target.value)}
-                      placeholder="Edit your region here..."
-                    />
+                    <>
+                      <TextInput
+                        label="Country"
+                        value={userRegion}
+                        onChange={(event) => setUserRegion(event.target.value)}
+                        placeholder="Edit your region here..."
+                      />
+                      <TextInput
+                        label="Monthly Income"
+                        value={income}
+                        onChange={(event) => setIncome(event.target.value)}
+                        placeholder="Enter your monthly income"
+                      />
+                      <TextInput
+                        label="Monthly Savings Goal"
+                        value={savingGoal}
+                        onChange={(event) => setSavingGoal(event.target.value)}
+                        placeholder="Enter your monthly savings goal"
+                      />
+                    </>
                   ) : (
-                    <p>Country: {userRegion}</p>
+                    <>
+                      <p>Country: {userRegion}</p>
+                      <p>Monthly Income: {income}$</p>
+                      <p>Monthly Savings Goal: {savingGoal}$</p>
+                    </>
                   )}
                 </div>
               </div>
@@ -92,10 +111,7 @@ function MyProfile() {
           </Paper>
         </Container>
       )}
-      {!isAuthenticated && (
-        <p>Please Login or Sign-up to view your profile</p>
-      )
-      }
+      {!isAuthenticated && <p>Please Login or Sign-up to view your profile</p>}
     </>
   );
 }

@@ -20,15 +20,15 @@ function App() {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
+  // Fetch and Store users JWT in localStorage to persist session upon revisit (assuming token is not expired).
   useEffect(() => {
-    //console.log(isLoggedIn);
     const token = localStorage.getItem('jwt');
     setIsLoggedIn(token !== null && token !== '');
     async function fetchAndStoreToken() {
       if (isAuthenticated) {
         try {
           const token = await getAccessTokenSilently();
-          // Store the token in local storage or context
+          // Store the token in local storage
           localStorage.setItem('jwt', token);
           setIsLoggedIn(true);
         } catch (error) {
@@ -44,6 +44,7 @@ function App() {
     fetchAndStoreToken();
   }, [isAuthenticated, getAccessTokenSilently]);
 
+
   return (
     <>
       <Router>
@@ -57,7 +58,6 @@ function App() {
               <Route path="/reports" element={<Reports />} />
               <Route path="/profile" element={<MyProfile/>} />
               <Route path="/settings" element={<Settings />} />
-              {/* More Routes Here */}
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/contact-us" element={<Contact />} />

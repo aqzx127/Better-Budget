@@ -34,7 +34,15 @@ const User = sequelize.define('users', {
     type: Sequelize.BOOLEAN,
     allowNull: false,
     defaultValue: false,
-  }
+  },
+  monthlyIncome: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  monthlySavingsGoal: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
   // add more attributes as needed
 });
 

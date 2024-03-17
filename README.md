@@ -26,36 +26,39 @@
             - Bio
             - Region
 
-            // Creating an initial user record until they add more info
+        - User has a main built in Better-Budget Account and can add multiple Plaid accounts which are separate entities. [ ]
+
+        - Prompt user to input monthly income to start with [ ]
 
         - User Profile Creation [X]
                 - Settings Page []
-                - Notifications Setup []
+                - Notifications Setup [] (NOT IMPORTANT RN)
                 - Bio/About Page [X]
+                - Terms of Service [ ]
         
         - Bank Linking [ ]
                 - Plaid API [X] (Still need to save Plaid data to local postgreSQL DB)
                 - Populate Balance [X], 
                 - Populate/List Transactions []
-                - Categorize Expenses []
+                - Categorize Expenses [] (Need to train MLM to categorize transactions, AWS SageMaker)
 ---
     - User Expense Tracking (Feature 2) [ ]
 
         - Data Entry
-           - Form Fields
-           - Categorization
-           - Date Picker
-           - File Upload (Receipt/Photo)
+           - Form Fields [X]
+           - Categorization [ ]
+           - Date Picker [X]
+           - File Upload (Receipt/Photo) [ ] (NOT IMPORTANT RN)
 
            - User Statement/Transaction Data Model
-                - Amount [int]
+                - Amount [int]  v
                 - Date/Time [string] (dayJS autofill)
                 - Category [string]
                 - Payment Method [string]
                 - Description/Notes [string]
                 - Receipts/Images [file upload] (optional)
         
-        - Data Privacy & Security
+        - Data Privacy & Security 
            - Privacy Policy
            - Data Encryption (Transit/Rest)
            - Secure Authentication

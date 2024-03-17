@@ -24,7 +24,9 @@ exports.getUser = async (req, res) => {
             email: user.email,
             region: user.region,
             bio: user.bio,
-            additionalInfo: user.additionalInfo,
+            additionalInfo: user.additionalInfo, 
+            income: user.monthlyIncome,
+            savingGoal: user.monthlySavingsGoal
         };
 
         res.json(userData);
@@ -36,7 +38,8 @@ exports.getUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
     const userId = req.params.userId;
-    const { bio, region } = req.body;
+    console.log(req.body);
+    const { bio, region, monthlyIncome, monthlySavingsGoal } = req.body;
     try {
         const user = await User.findOne({ where: { userId } });
     
@@ -47,7 +50,9 @@ exports.updateUser = async (req, res) => {
         // Update user data
         user.bio = bio;
         user.region = region;
-    
+        user.monthlyIncome = monthlyIncome;
+        user.monthlySavingsGoal = monthlySavingsGoal;
+        
         // Save changes to the database
         await user.save();
     

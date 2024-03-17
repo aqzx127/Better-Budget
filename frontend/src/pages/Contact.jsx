@@ -21,3 +21,5 @@ function Contact() {
     }
 
     export default Contact;
+
+    // Goals for this page is to just send a POST request to server with the form data as body to be stored in postgreSQL.
