@@ -25,6 +25,11 @@ const Goal = sequelize.define('goals', {
   title: {
     type: Sequelize.STRING,
     allowNull: false,
+  },
+  progress: {
+    type: Sequelize.STRING,
+    allowNull: true,
+    defaultValue: "0"
   }
   // add more attributes as needed
 });

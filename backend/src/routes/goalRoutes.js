@@ -9,9 +9,9 @@ router.post('/create', jwtCheck, goalController.createUserGoal); // Create Goal 
 
 router.get('/view', jwtCheck, goalController.fetchUserGoals); // Fetch Goals from PostgreSQL
 
-//router.put('/update/:id', jwtCheck, transactionController.updateTransaction); // Edit Goal
+router.put('/update/:id', jwtCheck, goalController.updateGoalProgress); // Edit Goal
 
-//router.delete('/delete/:id', jwtCheck, transactionController.deleteTransaction); // Delete Goal
+router.delete('/delete/:id', jwtCheck, goalController.deleteUserGoal); // Delete Goal
 
 
 // Define other user routes here

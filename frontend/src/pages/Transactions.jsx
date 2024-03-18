@@ -119,7 +119,7 @@ function Transactions() {
               <Table.Td>{formatDate(transaction.date)}</Table.Td>
               <Table.Td>{transaction.name}</Table.Td>
               <Table.Td>{transaction.transactionType}</Table.Td>
-              <Table.Td>{transaction.amount}$</Table.Td>
+              <Table.Td>{(transaction.amount)}$</Table.Td>
               <Table.Td>
                 <span style={{ color: transaction.status === 'Completed' ? 'green' : 'orange' }}>
                   {transaction.status}

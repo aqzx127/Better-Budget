@@ -94,20 +94,7 @@ function Dashboard() {
               <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} />
             </Grid.Col>
             <Grid.Col span={6}>
-            <RingProgress
-                size={170}
-                thickness={16}
-                label={
-                  <Text size="xs" ta="center" px="xs" style={{ pointerEvents: 'none' }}>
-                    Your Spending Categorized
-                  </Text>
-                }
-                sections={[
-                  { value: 40, color: 'cyan', tooltip: `Food` },
-                  { value: 25, color: 'orange', tooltip: 'Entertainment' },
-                  { value: 15, color: 'grape', tooltip: 'Utilities' },
-                ]}
-              />
+            <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} />
             </Grid.Col>
           </Grid>
         </SimpleGrid>

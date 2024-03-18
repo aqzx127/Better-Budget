@@ -229,3 +229,36 @@ export const fetchUserGoals = async (token) => {
     throw new Error("Error fetching User Goals: " + error.message)
   }
 };
+
+export const updateGoalProgress = async (token, goalId, progress) => {
+  try {
+    const response = await fetch(`http://localhost:3001/api/goals/update/${goalId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ goalId, progress })
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error("Error updating goal progress: " + error.message);
+  } 
+}
+
+export const deleteUserGoal = async (token, goalId) => {
+  try {
+    const response = await fetch(`http://localhost:3001/api/goals/delete/${goalId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error("Error deleting User Goal: ", error.message);
+  }
+}

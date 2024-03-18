@@ -80,8 +80,8 @@ function MyProfile() {
                   ) : (
                     <>
                       <p>Country: {userRegion}</p>
-                      <p>Monthly Income: {income}$</p>
-                      <p>Monthly Savings Goal: {savingGoal}$</p>
+                      <p>Monthly Income: ${parseInt(income).toLocaleString()}</p>
+                      <p>Monthly Savings Goal: ${parseInt(savingGoal).toLocaleString()}</p>
                     </>
                   )}
                 </div>
