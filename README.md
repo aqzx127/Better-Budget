@@ -26,9 +26,9 @@
             - Bio
             - Region
 
-        - User has a main built in Better-Budget Account and can add multiple Plaid accounts which are separate entities. [ ]
+        - User has a main built in Better-Budget Account and can add multiple Plaid accounts which are separate entities. [/] IDEA SCRATCHED
 
-        - Prompt user to input monthly income to start with [ ]
+        - Prompt user to input monthly income to start with [X]
 
         - User Profile Creation [X]
                 - Settings Page []
@@ -36,13 +36,13 @@
                 - Bio/About Page [X]
                 - Terms of Service [ ]
         
-        - Bank Linking [ ]
+        - Bank Linking [/] IDEA SCRATCHED
                 - Plaid API [X] (Still need to save Plaid data to local postgreSQL DB)
                 - Populate Balance [X], 
                 - Populate/List Transactions []
                 - Categorize Expenses [] (Need to train MLM to categorize transactions, AWS SageMaker)
 ---
-    - User Expense Tracking (Feature 2) [ ]
+    - User Expense Tracking (Feature 2) [X]
 
         - Data Entry
            - Form Fields [X]
@@ -69,13 +69,13 @@
            - Reports: Allow users to generate monthly detailed reports
            - Transaction History: Show users a list of all their previous transactions
 ---
-    - AI Insights Chatbot via OpenAI API (Feature 3) [ ]
+    - AI Insights Chatbot via OpenAI API (Feature 3) [X] NEEDS $FUNDS 
         - BudgetBuddy Main Features:
            - Analyze user income/expense and savings goals
            - Provide recommendations based on user data
            - Ensure security and privacy of user financial data while delivering insights
 --- 
-    - User Goal Setting and Tracking (Feature 4) [ ]
+    - User Goal Setting and Tracking (Feature 4) [X]
 
         - Set Specific Goals with target amounts/deadlines
         - System must track users progress toward goal in real-time

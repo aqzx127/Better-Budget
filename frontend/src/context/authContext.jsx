@@ -16,7 +16,31 @@ export const AuthProvider = ({ children }) => {
     setIsSidebarOpen(!isSidebarOpen); 
   };
 
-  
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      if (isAuthenticated && user) {
+        try {
+          const accessToken = await getAccessTokenSilently();
+          const response = await fetch(`http://localhost:3001/api/users/${user.sub}`, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          if (response.ok) {
+            const userData = await response.json();
+            setIncome(userData.monthlyIncome || '');
+            setSavingGoal(userData.monthlySavingsGoal || '');
+          } else {
+            console.error('Failed to fetch user data:', response.statusText);
+          }
+        } catch (error) {
+          console.error('Error fetching user profile data:', error);
+        }
+      }
+    };
+
+    fetchProfileData();
+  }, [isAuthenticated, user, getAccessTokenSilently]);
   
   useEffect(() => {
     const createUserInDatabase = async () => {

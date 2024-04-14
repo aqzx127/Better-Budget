@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Paper, Button, Tooltip, Alert, Center, Group, Progress } from '@mantine/core';
+import { Paper, Button, Tooltip, Alert, Center, Group, Progress, Text } from '@mantine/core';
 import { IconPlus } from '@tabler/icons-react';
 import AddGoalModal from '../components/AddGoalModal'; // Import the AddGoalModal component
 import { useAuth0 } from "@auth0/auth0-react";
@@ -109,6 +109,8 @@ function Goals() {
           </Group>
         </Paper>
       ));
+    } else {
+      return <Text align="center" size="md" style={{ margin: '20px' }}>Add your first goal to get started!</Text>;
     }
   };
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Paper, Table, Button, Tooltip, Pagination, Alert, Center, Group } from '@mantine/core';
+import { Paper, Table, Button, Tooltip, Pagination, Alert, Center, Group, Text } from '@mantine/core';
 import { IconPlus } from '@tabler/icons-react';
 import { useAuth0 } from "@auth0/auth0-react";
 import AddTransactionModal from "../components/AddTransactionModal";
@@ -153,6 +153,8 @@ function Transactions() {
             ))}
         </>
       );
+    } else {
+      return <Text align="center" size="md" style={{ margin: '20px' }}>Add your first transaction to get started!</Text>;
     }
   };
 
